@@ -14,7 +14,7 @@ const Footer = (props) => {
           href="https://github.com/hashirshoaeb"
           aria-label="My GitHub"
         > <span className="badge bg-dark">
-            Hashir Shoaib
+            Muhammad Kawsar Ahmad Somrat
           </span>
         </a>{" "}
         using <i className="fab fa-react" />
