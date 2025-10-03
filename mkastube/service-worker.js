@@ -1,9 +1,9 @@
-const CACHE_NAME = "iostube-cache-v1";
+const CACHE_NAME = "mkastube-cache-v1";
 const urlsToCache = [
-  "/iostube/",
-  "/iostube/index.html",
-  "/iostube/styles.css",
-  "/iostube/script.js"
+  "/mkastube/",
+  "/mkastube/index.html",
+  "/mkastube/styles.css",
+  "/mkastube/script.js"
 ];
 
 // Install Service Worker
