@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>QR Code Generator</title>
+  <style type="text/css" media="all">
+    *,:before,:after{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial;
+    }
+    body{
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      background: #edf1f5;
+    }
+    .box{
+      width: 320px;
+      background: #fff;
+      text-align: center;
+      padding: 30px 0;
+    }
+    .box h2{
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 1px #ddd,2px 2px 1px #ddd;
+    }
+    .box img{
+      width: 250px;
+      height: 250px;
+      padding: 10px;
+      box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+      background: #fff!important;
+    }
+    .box textarea{
+      padding: 10px 15px;
+      margin-top: 10px;
+      max-width: 250px;
+      min-width: 250px;
+      min-height: 50px;
+      outline: none;
+      border: none;
+      border: 2px solid #edf1f5;
+      box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+    }
+    .box textarea::placeholder{
+      color: #d9d6d6;
+    }
+    .box textarea:focus{
+      border-color: #1876f3;
+    }
+  </style>
+</head>
+<body>
+  <form class="box">
+    <h2> QR Code by SOMRAT</h2>
+    <img id="qr" />
+    <textarea type="text" name="value" placeholder="Type here something! Then hold this QR to download!" autofocus></textarea>
+  </form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script src="qr.js">
+   </script>
+</body>
+</html>
