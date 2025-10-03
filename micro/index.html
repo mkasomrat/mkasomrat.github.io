@@ -1,0 +1,164 @@
+﻿<html>
+<head>
+    <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title> (miCro)Car GamE</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.js"></script>
+    <script src="https://dl.dropbox.com/s/nn9wz6aimz6vzoi/OBJLoader.js"></script>
+    <script src="https://dl.dropbox.com/s/2821pj5wkc2b8pe/MTLLoader.js"></script>
+    <script src="https://dl.dropbox.com/s/qxgrvxduynnst3u/OrbitControls.js"></script>
+
+</head>
+
+<body style="margin: 0px;">
+    <div class="pads" id="touchPad"></div>
+    <div class="pads" id="padDot"></div>
+    <div class="countDown" id="cd1">1</div>
+    <div class="countDown" id="cd2">2</div>
+    <div class="countDown" id="cd3">3</div>
+    <div class="textes" id="scoreText">Time: 00.000</div>
+    <div class="textes" id="lap1">Lap 1: </div>
+    <div class="textes" id="lap2">Lap 2: </div>
+    <div class="textes" id="lap3">Lap 3: </div>
+    <button id="restartButton">Restart</button>
+    
+    <style> 
+    
+    /* Created by Muhammad Kawsar Ahmad Somrat */
+
+body{
+    position:fixed;
+}
+
+.pads {
+    position: fixed;
+    border-radius: 55%;
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#touchPad{
+    border: 2px solid black;
+    left: 55%;
+    width:150px;
+    height:150px;
+    bottom: 55%;
+    opacity:0.6;
+    background-color:gray;
+    transform: translate(-50%, 50%);
+}
+
+#padDot{
+    border: 1px solid black;
+    left: 55%;
+    width:50px;
+    height:50px;
+    bottom: 55%;
+    opacity:0.9;
+    background-color: #f2f2f2;
+    display:none;
+    transform: translate(-50%, -50%);
+}
+
+.countDown{
+   position: fixed;
+   left: 50%;
+   transform: translate(-50%, 50%);
+    
+color: black;
+width:100%;
+text-align:center;
+    font-family: "Verdana", Times, serif;
+    
+bottom: 50%;
+    
+font-size: 15px;
+opacity:1;
+font-weight:bold;
+display:none;
+
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.textes{
+    font-family: "Verdana", Times, serif;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    color: black;
+    width:100%;
+    text-align:center;
+    
+        user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    
+}
+
+#scoreText {
+    bottom: 90%;
+    font-weight:bold;
+    font-size: 22px;
+}
+
+#lap1 {
+    bottom: 85%;
+    font-size: 16px;
+    display:none;
+}
+
+#lap2 {
+    bottom: 80%;
+    font-size: 16px;
+    display:none;
+}
+
+#lap3 {
+    bottom: 75%;
+    font-size: 16px;
+    display:none;
+}
+
+#restartButton {
+    left: 25%;
+    background-color:#33cc33;
+    font-size: 27px;
+    width:40%;
+    height:15%;
+    bottom: 10%;
+    border-radius: 20%;
+    border: 2px solid black;
+    color:#000000;
+    font-weight:bold;
+    
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+    transform: translate(-50%, 50%);
+    font-family: "Verdana", Times, serif;
+    letter-spacing: 2px;
+    display:none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+    
+    </style>
+   
+    <script src="script.js">
+    </script>
+    </body>
+</html>
