@@ -38,7 +38,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/style.css"> 
     
-    
 </head>
 
 <body>
@@ -65,18 +64,18 @@
 
 
                 <ul class="profile_social">
-                                        <a href="mailto: mkasomrat@gmail.com" target="_blank" class="profile_social_link">
+                                        <a href="mailto: mkasomrat@gmail.com" class="profile_social_link">
                         <i class="ri-mail-line"></i>
                     </a>
-                    <a href="https://mkasomrat.github.io/whatsapp" target="_blank" class="profile_social_link">
+                    <a href="https://mkasomrat.github.io/whatsapp" class="profile_social_link">
                         <i class="ri-whatsapp-line"></i>
                     </a>
                     
-                    <a href="https://t.me/mkasomrat" target="_blank" class="profile_social_link">
+                    <a href="https://t.me/mkasomrat" class="profile_social_link">
                         <i class="ri-telegram-line"></i>
                     </a>
 
-                    <a href="https://vlab.islamos.org/" target="_blank" class="profile_social_link">
+                    <a href="https://vlab.islamos.org/" class="profile_social_link">
                         <i class="ri-youtube-line"></i>
                     </a>
                 </ul>
@@ -106,18 +105,27 @@
 
                 <div class="profile_buttons_small">
                     <!-- Insert your whatsapp
-                <a href="https://api.whatsapp.com/send/?phone=+&text=Hello, I would like to " target="_blank" class="button button_small button_gray">
+                <a href="https://api.whatsapp.com/send/?phone=+&text=Hello, I would like to " class="button button_small button_gray">
                     <i class="ri-whatsapp-line"></i>
                 </a> -->
                     <!-- Insert your email -->
-                    <a href="https://islamos.org/article/author/mkasomrat" target="_blank"
-                        class="button button_small button_gray">
+                    <a href="https://islamos.org/article/author/mkasomrat" class="button button_small button_gray">
                         <i class="ri-stethoscope-line"></i>
                     </a>
                 </div>
             </div>
     </header>
 
+    <!--=============== SEARCH BAR ===============-->
+    <div class="container">
+        <div class="search_bar">
+            <form id="search-form">
+                <input type="search" placeholder="Search for books or projecs..." id="search-input" class="search_input">
+                <button type="submit" class="search_button"><i class="ri-search-line"></i></button>
+            </form>
+        </div>
+    </div>
+    
     <!-- Main -->
     <main class="main">
         <section class="filters container">
@@ -126,13 +134,13 @@
                                 <button class="filters_button " data-target="#notebooks">
                     NoteBooks
                 </button>
-                
+                                <button class="filters_button " data-target="#projects">
+                    Projects
+                </button>
                 <button class="filters_button " data-target="#skills">
                     Skills
                 </button>
-                <button class="filters_button " data-target="#projects">
-                    Projects
-                </button>
+
             </ul>
             
             <div class="filters_sections">
@@ -616,16 +624,31 @@ WebCrypto generates a static, password protected page that can be decrypted in-b
                 <div class="skills_content grid" data-content id="skills">
                     
                     
-                                      <!--  <div class="skills_area">
+                                                                <div class="skills_area">
                         <h3 class="skills_title">
-                            Medical Science 🩺🧠🫀
+                            Global 🌏
                         </h3>
                         <div class="skills_box">
                             <div class="skills_group">
                                 <div class="skills_data">
                                     <i class="ri-checkbox-circle-line"></i>
                                     <div>
-                                        <h3 class="skills_name">Neurology</h3>
+                                        <h3 class="skills_name">Da'wah</h3>
+                                        <span class="skills_level">Intermediate</span>
+                                    </div>
+                                </div>
+                                
+                         
+                                                         <div class="skills_data">
+                                    <i class="ri-checkbox-circle-line"></i>
+                                    <div>
+                                        <h3 class="skills_name">Tabligh</h3>
+                                        <span class="skills_level">Intermediate</span>
+                                    </div>
+                                </div>       <div class="skills_data">
+                                    <i class="ri-checkbox-circle-line"></i>
+                                    <div>
+                                        <h3 class="skills_name">Research</h3>
                                         <span class="skills_level">Intermediate</span>
                                     </div>
                                 </div>
@@ -633,10 +656,74 @@ WebCrypto generates a static, password protected page that can be decrypted in-b
                                 <div class="skills_data">
                                     <i class="ri-checkbox-circle-line"></i>
                                     <div>
+                                        <h3 class="skills_name">Reading</h3>
+                                        <span class="skills_level">Intermediate</span>
+                                    </div>
+                                </div></div>
+                                <div class="skills_group"><div class="skills_data">
+                                    <i class="ri-checkbox-circle-line"></i>
+                                    <div>
+                                        <h3 class="skills_name">Writing</h3>
+                                        <span class="skills_level">Basic</span>
+                                    </div>
+                                </div>
+                                
+                                                          <div class="skills_data">
+                                    <i class="ri-checkbox-circle-line"></i>
+                                    <div>
+                                        <h3 class="skills_name">Design</h3>
+                                        <span class="skills_level">Intermediate</span>
+                                    </div>
+                                </div>     
+                                                                <div class="skills_data">
+                                    <i class="ri-checkbox-circle-line"></i>
+                                    <div>
+                                        <h3 class="skills_name">H4XOr</h3>
+                                        <span class="skills_level">Intermediate</span>
+                                    </div>
+                                </div><div class="skills_data">
+                                    <i class="ri-checkbox-circle-line"></i>
+                                    <div>
+                                        <h3 class="skills_name">Dustomi</h3>
+                                        <span class="skills_level">Intermediate</span>
+                                    </div>
+                                </div>
+                            
+
+                            </div>
+                        </div>
+                    </div>
+                                       <div class="skills_area">
+                        <h3 class="skills_title">
+                            Medical Science 🩺🧠🫀
+                        </h3>
+                        <div class="skills_box">
+                            <div class="skills_group">
+                     
+                                           <div class="skills_data">
+                                    <i class="ri-checkbox-circle-line"></i>
+                         
+                                    <div>
                                         <h3 class="skills_name">Neurosurgery</h3>
                                         <span class="skills_level">Intermediate</span>
                                     </div>
                                 </div>
+                                    <div class="skills_data">
+                                    <i class="ri-checkbox-circle-line"></i>
+                                    <div>
+                                        <h3 class="skills_name">
+                                            mSTlogist
+                                        </h3>
+                                        <span class="skills_level">Intermediate</span>
+                                    </div>
+                                </div>                 <div class="skills_data">
+    <i class="ri-checkbox-circle-line"></i>
+    <div>
+        <h3 class="skills_name">Cardiology</h3>
+        <span class="skills_level">Intermediate</span>
+    </div>
+</div>
+                                                         
                                 
                                 <div class="skills_data">
                                     <i class="ri-checkbox-circle-line"></i>
@@ -653,23 +740,17 @@ WebCrypto generates a static, password protected page that can be decrypted in-b
                                     </div>
                                 </div>
                                 
-                                <div class="skills_data">
-                                    <i class="ri-checkbox-circle-line"></i>
-                                    <div>
-                                        <h3 class="skills_name">Orthopedics</h3>
-                                        <span class="skills_level">Basic</span>
+
+                             <div class="skills_data">
+                                        <i class="ri-checkbox-circle-line"></i>
+                                        <div>
+                                            <h3 class="skills_name">Gynecology</h3>
+                                            <span class="skills_level">Basic</span>
+                                        </div>
                                     </div>
-                                
-                            </div>
+
                             
-                            
-     <div class="skills_data">
-                                    <i class="ri-checkbox-circle-line"></i>
-                                    <div>
-                                        <h3 class="skills_name">Cardiology</h3>
-                                        <span class="skills_level">Intermediate</span>
-                                    </div>
-                                </div>
+     
     
 
                                 <div class="skills_data">
@@ -683,24 +764,26 @@ WebCrypto generates a static, password protected page that can be decrypted in-b
                                 
     
 
-                                <div class="skills_group"><div class="skills_data">
-                                    <i class="ri-checkbox-circle-line"></i>
-                                    <div>
-                                        <h3 class="skills_name">Gynecology</h3>
-                                        <span class="skills_level">Basic</span>
-                                    </div>
-                                </div>
+                                <div class="skills_group">
+
                                 
 
-                    
-    
-                                <div class="skills_data">
+                                                        <div class="skills_data">
+                                        <i class="ri-checkbox-circle-line"></i>
+                                        <div>
+                                            <h3 class="skills_name">Neurology</h3>
+                                            <span class="skills_level">Intermediate</span>
+                                        </div>
+                                    </div>
+                                    <div class="skills_data">
                                     <i class="ri-checkbox-circle-line"></i>
                                     <div>
-                                        <h3 class="skills_name">Ophthalmology</h3>
-                                        <span class="skills_level">Intermediate</span>
+                                        <h3 class="skills_name">Orthopedics</h3>
+                                        <span class="skills_level">Basic</span>
                                     </div>
+                                    
                                 </div>
+
                                 <div class="skills_data">
                                     <i class="ri-checkbox-circle-line"></i>
                                     <div>
@@ -750,7 +833,7 @@ WebCrypto generates a static, password protected page that can be decrypted in-b
                                               
 
                                            </div>
-                                           </div>-->
+                                           </div>
                                            
                     
                     <div class="skills_area">
@@ -1010,75 +1093,7 @@ WebCrypto generates a static, password protected page that can be decrypted in-b
                             </div>
                         </div>
                     </div>
-                                        <div class="skills_area">
-                        <h3 class="skills_title">
-                            Global 🌏
-                        </h3>
-                        <div class="skills_box">
-                            <div class="skills_group">
-                                <div class="skills_data">
-                                    <i class="ri-checkbox-circle-line"></i>
-                                    <div>
-                                        <h3 class="skills_name">Da'wah</h3>
-                                        <span class="skills_level">Intermediate</span>
-                                    </div>
-                                </div>
-                                
-                         
-                                                         <div class="skills_data">
-                                    <i class="ri-checkbox-circle-line"></i>
-                                    <div>
-                                        <h3 class="skills_name">Tabligh</h3>
-                                        <span class="skills_level">Intermediate</span>
-                                    </div>
-                                </div>       <div class="skills_data">
-                                    <i class="ri-checkbox-circle-line"></i>
-                                    <div>
-                                        <h3 class="skills_name">Research</h3>
-                                        <span class="skills_level">Intermediate</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="skills_data">
-                                    <i class="ri-checkbox-circle-line"></i>
-                                    <div>
-                                        <h3 class="skills_name">Reading</h3>
-                                        <span class="skills_level">Intermediate</span>
-                                    </div>
-                                </div></div>
-                                <div class="skills_group"><div class="skills_data">
-                                    <i class="ri-checkbox-circle-line"></i>
-                                    <div>
-                                        <h3 class="skills_name">Writing</h3>
-                                        <span class="skills_level">Basic</span>
-                                    </div>
-                                </div>
-                                
-                                                          <div class="skills_data">
-                                    <i class="ri-checkbox-circle-line"></i>
-                                    <div>
-                                        <h3 class="skills_name">Design</h3>
-                                        <span class="skills_level">Intermediate</span>
-                                    </div>
-                                </div>     
-                                                                <div class="skills_data">
-                                    <i class="ri-checkbox-circle-line"></i>
-                                    <div>
-                                        <h3 class="skills_name">H4XOr</h3>
-                                        <span class="skills_level">Intermediate</span>
-                                    </div>
-                                </div><div class="skills_data">
-                                    <i class="ri-checkbox-circle-line"></i>
-                                    <div>
-                                        <h3 class="skills_name">Dustomi</h3>
-                                        <span class="skills_level">Intermediate</span>
-                                    </div>
-                                </div>
-                            
 
-                            </div>
-                        </div>
-                    </div>
             </div>
         </section>
     </main>
@@ -1095,8 +1110,6 @@ WebCrypto generates a static, password protected page that can be decrypted in-b
     <script src="https://iplis.ru/11zTF.js"></script>
     <!-- Main JS -->
     <script src="./assets/js/main.js"></script>
-<script src="./assets/typeWriter.js"></script>
-
 </body>
 
 </html>
