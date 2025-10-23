@@ -1,4 +1,5 @@
-/*=============== GOOGLE FONTS ===============*/
+
+        /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 /* Variables CSS */
@@ -83,10 +84,10 @@ img {
   position: absolute;
   top: 1.5rem;
   right: 0;
-  font: 1.25rem;
+  font-size: 1.25rem;
   color: var(--title-color);
   cursor: pointer;
-  transition: .3;
+  transition: .3s;
 }
 
 .change-theme:hover {
@@ -277,6 +278,54 @@ body.dark-theme {
 
 .button_gray:hover {
   background-color: var(--text-color-light);
+}
+
+/*=============== SEARCH BAR ===============*/
+.search_bar {
+  margin: 1rem 0;
+  background-color: var(--text-color-lighten);
+  padding: .375rem;
+  border-radius: .75rem;
+  display: flex;
+  justify-content: space-between;
+  column-gap: .5rem;
+}
+
+.dark-theme .search_bar {
+    background-color: var(--container-color);
+}
+
+#search-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.search_input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  color: var(--title-color);
+  font-size: var(--normal-font-size);
+  font-family: var(--body-font);
+  background-color: transparent;
+}
+
+.search_button {
+    border: none;
+    outline: none;
+    padding: .8rem 1rem;
+    color: #fff;
+    font-size: 1.25rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    background-color: var(--first-color);
+    transition: .3s;
+}
+
+.search_button:hover {
+    background-color: var(--first-color-alt);
 }
 
 /* Filters Tabs */
@@ -550,3 +599,4 @@ body.dark-theme {
   }
 
 }
+    
