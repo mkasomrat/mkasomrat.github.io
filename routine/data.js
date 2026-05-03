@@ -7,7 +7,7 @@
       { id: 5, start: "08:15 PM", end: "08:45 PM", title: "I'sha Salah", note: "Hasten to Prayer, Hasten to Success", type: "salah" },
       { id: 6, start: "08:45 PM", end: "09:00 PM", title: "Dinner", note: "Warm food, warm hearts.", type: "dinner" },
       { id: 7, start: "09:00 PM", end: "09:15 PM", title: "Kitab Ta'lim", note: "O Allah! I ask You for beneficial knowledge, and a good Halal provision, and actions which are accepted.", type: "talim" }, 
-      { id: 8, start: "09:15 PM", end: "12:00 AM", title: "Study", note: "The more that you read, the more things you will know. Learning is an active process. We learn by doing. Only knowledge that is used sticks in your mind.", type: "study" },
+      { id: 8, start: "09:15 PM", end: "11:59 PM", title: "Study", note: "The more that you read, the more things you will know. Learning is an active process. We learn by doing. Only knowledge that is used sticks in your mind.", type: "study" },
       { id: 9, start: "12:00 AM", end: "12:20 AM", title: "Prepare for Sleep", note: "Fresh, Oju, Drink Water, Recite/Listen Surah Mulk,  Adhkar before sleeping.", type: "fresh" },
       { id: 10, start: "12:20 AM", end: "02:00 AM", title: "Sleep", note: "Sleep is the single most effective thing we can do to reset our brain and body health each day.", type: "rest" },
       { id: 11, start: "02:00 AM", end: "02:30 AM", title: "Starting The Day's", note: "Wake Up! Fresh, Oju, Tahaj'jud Salah, Make Du'a; Tahajjud is that secret conversation with Allah that illuminates your heart.", type: "salah" },
