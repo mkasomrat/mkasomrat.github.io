@@ -1,0 +1,320 @@
+        :root {
+            --primary: #6b4c9a;
+            --accent: #ff8c94;
+            --bg: #fdfcf0; /* Paper color */
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --line-color: #dcdde1;
+            --success: #2ecc71;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+            background-size: 20px 20px; /* Dot grid paper effect */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 3.5rem;
+            color: var(--primary);
+            text-decoration: underline wavy var(--accent);
+            text-underline-offset: 10px;
+        }
+
+        .current-status-bar {
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            border: 2px solid var(--primary);
+            display: none; /* Hidden until JS loads */
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .now-label {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .current-activity-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+            transition: width 1s linear;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--line-color);
+            border-radius: 2px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            margin-left: 45px;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 5px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .card::before {
+            content: attr(data-index);
+            position: absolute;
+            left: -54px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35px;
+            height: 35px;
+            background: var(--card-bg);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+            z-index: 1;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.2rem;
+        }
+
+        .card.active {
+            border-left: 5px solid var(--primary);
+            background: #fdfaff;
+            box-shadow: 0 0 0 2px var(--primary), 0 8px 20px rgba(107, 76, 154, 0.2);
+        }
+
+        .card.active::before {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 0 4px rgba(107, 76, 154, 0.3);
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: #ececec;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .card.active .time-badge {
+            background: var(--primary);
+            color: white;
+        }
+
+        .activity-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-family: 'Patrick Hand', cursive;
+        }
+
+        .notes {
+            font-size: 0.95rem;
+            color: #666;
+            background: #fff8e1;
+            padding: 8px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 5px;
+            border-left: 3px solid #ffd54f;
+        }
+
+        /* Specific Activities styling */
+        .salah { border-left-color: #2ecc71; }
+        .salah::before { border-color: #2ecc71; color: #2ecc71; }
+        .salah.active { border-left-color: #2ecc71; box-shadow: 0 0 0 2px #2ecc71; }
+        .salah.active::before { background: #2ecc71; color: white; }
+        
+        /* ── Study — Deep Blue ── */
+        .study { border-left-color: #2980b9; }
+        .study::before { border-color: #2980b9; color: #2980b9; }
+        .study.active { border-left-color: #2980b9; box-shadow: 0 0 0 2px #2980b9; }
+        .study.active::before { background: #2980b9; color: white; }
+
+        /* ── Notes — Ink Purple ── */
+        .notes { border-left-color: #8e44ad; }
+        .notes::before { border-color: #8e44ad; color: #8e44ad; }
+        .notes.active { border-left-color: #8e44ad; box-shadow: 0 0 0 2px #8e44ad; }
+        .notes.active::before { background: #8e44ad; color: white; }
+
+        /* ── Break — Soft Coral ── */
+        .break { border-left-color: #e74c3c; }
+        .break::before { border-color: #e74c3c; color: #e74c3c; }
+        .break.active { border-left-color: #e74c3c; box-shadow: 0 0 0 2px #e74c3c; }
+        .break.active::before { background: #e74c3c; color: white; }
+
+        /* ── Quran — Gold ── */
+        .quran { border-left-color: #f39c12; }
+        .quran::before { border-color: #f39c12; color: #f39c12; }
+        .quran.active { border-left-color: #f39c12; box-shadow: 0 0 0 2px #f39c12; }
+        .quran.active::before { background: #f39c12; color: white; }
+
+        /* ── College — Steel Blue ── */
+        .college { border-left-color: #1abc9c; }
+        .college::before { border-color: #1abc9c; color: #1abc9c; }
+        .college.active { border-left-color: #1abc9c; box-shadow: 0 0 0 2px #1abc9c; }
+        .college.active::before { background: #1abc9c; color: white; }
+
+        /* ── School — Teal ── */
+        .school { border-left-color: #16a085; }
+        .school::before { border-color: #16a085; color: #16a085; }
+        .school.active { border-left-color: #16a085; box-shadow: 0 0 0 2px #16a085; }
+        .school.active::before { background: #16a085; color: white; }
+
+        /* ── Travelling — Orange ── */
+        .travelling { border-left-color: #e67e22; }
+        .travelling::before { border-color: #e67e22; color: #e67e22; }
+        .travelling.active { border-left-color: #e67e22; box-shadow: 0 0 0 2px #e67e22; }
+        .travelling.active::before { background: #e67e22; color: white; }
+
+        /* ── Sleep / Rest — Midnight Blue ── */
+        .sleep { border-left-color: #2c3e50; }
+        .sleep::before { border-color: #2c3e50; color: #2c3e50; }
+        .sleep.active { border-left-color: #2c3e50; box-shadow: 0 0 0 2px #2c3e50; }
+        .sleep.active::before { background: #2c3e50; color: white; }
+
+        .rest { border-left-color: #34495e; }
+        .rest::before { border-color: #34495e; color: #34495e; }
+        .rest.active { border-left-color: #34495e; box-shadow: 0 0 0 2px #34495e; }
+        .rest.active::before { background: #34495e; color: white; }
+
+        /* ── Dinner — Warm Rose ── */
+        .dinner { border-left-color: #c0392b; }
+        .dinner::before { border-color: #c0392b; color: #c0392b; }
+        .dinner.active { border-left-color: #c0392b; box-shadow: 0 0 0 2px #c0392b; }
+        .dinner.active::before { background: #c0392b; color: white; }
+
+        /* ── Breakfast — Sunny Yellow ── */
+        .breakfast { border-left-color: #f1c40f; }
+        .breakfast::before { border-color: #f1c40f; color: #f1c40f; }
+        .breakfast.active { border-left-color: #f1c40f; box-shadow: 0 0 0 2px #f1c40f; }
+        .breakfast.active::before { background: #f1c40f; color: white; }
+
+        /* ── Dawah — Sky Blue ── */
+        .talim { border-left-color: #3498db; }
+        .talim::before { border-color: #3498db; color: #3498db; }
+        .talim.active { border-left-color: #3498db; box-shadow: 0 0 0 2px #3498db; }
+        .talim.active::before { background: #3498db; color: white; }
+
+        /* ── Food (general) — Salmon ── */
+        .food { border-left-color: #e17055; }
+        .food::before { border-color: #e17055; color: #e17055; }
+        .food.active { border-left-color: #e17055; box-shadow: 0 0 0 2px #e17055; }
+        .food.active::before { background: #e17055; color: white; }
+
+        /* ── Personal — Lavender ── */
+        .fresh { border-left-color: #9b59b6; }
+        .fresh::before { border-color: #9b59b6; color: #9b59b6; }
+        .fresh.active { border-left-color: #9b59b6; box-shadow: 0 0 0 2px #9b59b6; }
+        .fresh.active::before { background: #9b59b6; color: white; }
+
+        /* ── Chore — Slate Grey ── */
+        .chore { border-left-color: #7f8c8d; }
+        .chore::before { border-color: #7f8c8d; color: #7f8c8d; }
+        .chore.active { border-left-color: #7f8c8d; box-shadow: 0 0 0 2px #7f8c8d; }
+        .chore.active::before { background: #7f8c8d; color: white; }
+
+        /* ── Social — Vibrant Pink ── */
+        .dawah { border-left-color: #fd79a8; }
+        .dawah::before { border-color: #fd79a8; color: #fd79a8; }
+        .dawah.active { border-left-color: #fd79a8; box-shadow: 0 0 0 2px #fd79a8; }
+        .dawah.active::before { background: #fd79a8; color: white; }
+
+        @media (min-width: 768px) {
+            .timeline::before { left: 50%; }
+            .card { width: 45%; margin-left: 0; }
+            .card:nth-child(odd) { margin-left: auto; border-left: none; border-right: 5px solid transparent; }
+            .card:nth-child(even) { margin-right: auto; text-align: right; }
+            .card:nth-child(odd)::before { left: -61px; } 
+            .card:nth-child(even)::before { right: -61px; left: auto; }
+            .card.active:nth-child(odd) { border-right: 5px solid var(--primary); border-left: none; }
+            .card.active:nth-child(even) { border-left: 5px solid var(--primary); }
+            .card:nth-child(even) .notes { border-left: none; border-right: 3px solid #ffd54f; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            font-size: 0.9rem;
+        }

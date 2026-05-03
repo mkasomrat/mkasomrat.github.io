@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somrat's  Routine | mKas</title>
+    <meta name="description" content="A curated architectural blueprint of my daily life, designed to synthesize academic rigor with spiritual discipline. This interface serves as a real-time compass, ensuring every hour is intentionally directed toward personal growth, intellectual pursuit, and religious devotion." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="./design.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>&#10077;Routine&#10078;</h1>
+        <p>A visualized mKas's daily schedule</p>
+    </header>
+
+    <div id="status-bar" class="current-status-bar">
+        <div class="status-header">
+            <span class="now-label">Happening Now</span>
+            <span id="timer-text" style="font-size:0.9rem; color:#666;">-- min left</span>
+        </div>
+        <div class="current-activity-title" id="current-activity-name">Loading...</div>
+        <div class="notes" id="current-note" style="margin-top:5px; font-size:0.85rem; display:none;"></div>
+        <div style="margin-top: 10px;">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="timeline" id="timeline-container"></div>
+    
+    <footer>
+        Developed by Muhammad Kawsar Ahmad Somrat (مْ كِ أ سُمْرَتْ)  ®
+    </footer>
+</div>
+<script src="./data.js">
+</script>
+</body>
+</html>
