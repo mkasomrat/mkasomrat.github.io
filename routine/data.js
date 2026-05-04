@@ -49,6 +49,7 @@
     const timelineContainer = document.getElementById('timeline-container');
     const statusBar = document.getElementById('status-bar');
     const currentActivityName = document.getElementById('current-activity-name');
+    const currentActivityTime = document.getElementById('current-activity-time');
     const currentNote = document.getElementById('current-note');
     const progressBar = document.getElementById('progress-bar');
     const timerText = document.getElementById('timer-text');
