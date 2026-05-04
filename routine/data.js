@@ -91,7 +91,8 @@
         if (activeCard) activeCard.classList.add('active');
         
         statusBar.style.display = 'block';
-        currentActivityName.innerText = activeItem.title;
+        currentActivityName.childNodes[0].textContent = activeItem.title;
+currentActivityTime.textContent = `${activeItem.start} – ${activeItem.end}`;
         if (activeItem.note) {
           currentNote.innerText = activeItem.note;
           currentNote.style.display = 'inline-block';
