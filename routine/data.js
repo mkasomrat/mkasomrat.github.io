@@ -17,7 +17,7 @@
       { id: 15, start: "03:40 AM", end: "04:45 AM", title: "Study", note: "Again deep dive into study.", type: "study" },
       { id: 16, start: "04:45 AM", end: "05:10 AM", title: "Fajr Salah", note: "The two rakats of Fajr Sunnat Salah, is better than the world and everything in it.", type: "salah" },
       { id: 17, start: "05:10 AM", end: "05:20 AM", title: "Surah Ya'asin", note: "Recitation/Listen Surah Ya'asin. It is narrated that reciting Surah Yasin in the morning leads to the fulfillment of needs.", type: "quran" },
-      { id: 18, start: "05:20 AM", end: "07:30 AM", title: "Study", note: "Increase Knowledge; Wherever the art of Medicine is loved, there is also a love of Humanity.", type: "study" },
+      { id: 18, start: "05:20 AM", end: "07:20 AM", title: "Study", note: "Increase Knowledge; Wherever the art of Medicine is loved, there is also a love of Humanity.", type: "study" },
       { id: 19, start: "07:20 AM", end: "07:40 AM", title: "Ready to go to college", note: "Prepare for college, Fresh, Take Bath, Oju, Wear uniforms.", type: "fresh" },
       { id: 20, start: "07:40 AM", end: "07:45 AM", title: "2 Raka'h Nafl Salah", note: "Two units of prayer, offered sincerely, humbly, and with certainty in Allah, can change your life, insha'Allah", type: "salah" },
       { id: 21, start: "07:45 AM", end: "02:00 PM", title: "College Time", note: "Breakfast, College, Study, Exam, Launch, Dhuhr Salah (If possible)", type: "college" },
