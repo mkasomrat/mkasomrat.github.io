@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  MKA SOMRAT Portfolio — Dynamic version
+  Content is fetched from your cPanel PHP API.
+  Set API_BASE below to your cPanel domain.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="MKA SOMRAT (مْ كِ أ سُمْرَتْ)">
+    <meta name="description" content="Muhammad Kawsar Ahmad Somrat | Ṭālib-e-'ilm | Dā'ī ilallāh | Phīlānthrōpist">
+    <meta name="twitter:card" content="./assets/images/profile.png">
+    <meta name="twitter:title" content="MKA SOMRAT (مْ كِ أ سُمْرَتْ) | Portfolio">
+    <title>MKA SOMRAT (مْ كِ أ سُمْرَتْ)</title>
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon" id="favicon-link">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+        /* Skeleton loader */
+        .skeleton{background:linear-gradient(90deg,#eee 25%,#f5f5f5 50%,#eee 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:8px}
+        @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+        .sk-card{height:200px;margin-bottom:8px}
+        .api-error{text-align:center;padding:40px;color:#888;font-size:.9rem}
+        .api-error a{color:var(--first-color)}
+    </style>
+</head>
+<body>
+
+    <!-- Header Profile -->
+    <header class="profile container">
+        <i class="ri-moon-line change-theme" id="theme-button"></i>
+        <div class="profile_container grid">
+            <div class="profile_data">
+                <div class="profile_border">
+                    <div class="my_profile">
+                        <img id="profile-img" src="assets/images/profile_pic.png" alt="Profile Picture" style="width:auto">
+                    </div>
+                </div>
+                <h2 class="profile_name" id="profile-name">— </h2>
+                <h3 class="profile_profession" id="profile-tagline"></h3>
+                <ul class="profile_social" id="profile-social"></ul>
+            </div>
+            <div class="profile_info grid" id="profile-info"></div>
+            <div class="profile_buttons" id="profile-buttons"></div>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="container">
+        <div class="search_bar">
+            <form id="search-form">
+                <input type="search" placeholder="Search for books or projects..." id="search-input" class="search_input">
+                <button type="submit" class="search_button"><i class="ri-search-line"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <main class="main">
+        <section class="filters container">
+            <ul class="filters_content" id="tabs-list">
+                <li class="skeleton" style="width:90px;height:36px;display:inline-block;margin-right:8px"></li>
+                <li class="skeleton" style="width:90px;height:36px;display:inline-block;margin-right:8px"></li>
+                <li class="skeleton" style="width:70px;height:36px;display:inline-block"></li>
+            </ul>
+            <div class="filters_sections" id="sections-container">
+                <div class="projects_content grid filters_active" style="gap:16px">
+                    <div class="skeleton sk-card"></div>
+                    <div class="skeleton sk-card"></div>
+                    <div class="skeleton sk-card"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./assets/js/scrollreveal.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script>
+    // ── CONFIG — set this to your cPanel domain ───────────────
+    // Example: 'https://yourdomain.com' or 'https://cpanel-subdomain.yourdomain.com'
+    const API_BASE = 'https://islamos.org/mkas/portfolio/db';
+    // ─────────────────────────────────────────────────────────
+
+    (async () => {
+        let data;
+        try {
+            const resp = await fetch(API_BASE + '/api/data.php');
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+            data = await resp.json();
+        } catch (e) {
+            document.getElementById('sections-container').innerHTML =
+                `<div class="api-error">
+                    <p>⚠️ Could not load data from API.</p>
+                    <p style="margin-top:8px;font-size:.8rem">
+                        Make sure <code>API_BASE</code> is set correctly in <code>index.html</code>
+                        and the PHP files are uploaded to your cPanel hosting.<br>
+                        <a href="${API_BASE}/api/data.php" target="_blank">Test API →</a>
+                    </p>
+                </div>`;
+            return;
+        }
+
+        const { profile, tabs, notebooks, projects, skills } = data;
+
+        // ── Profile ───────────────────────────────────────────
+        document.title = profile.name;
+        document.getElementById('profile-name').textContent = profile.name;
+        document.getElementById('profile-tagline').textContent = profile.tagline;
+        document.getElementById('profile-img').src = profile.profile_img;
+        document.getElementById('favicon-link').href = profile.favicon;
+
+        // Social links
+        const socials = [];
+        if (profile.email)
+            socials.push(`<a href="mailto:${profile.email}" class="profile_social_link"><i class="ri-mail-line"></i></a>`);
+        if (profile.whatsapp)
+            socials.push(`<a href="${profile.whatsapp}" class="profile_social_link"><i class="ri-whatsapp-line"></i></a>`);
+        if (profile.telegram)
+            socials.push(`<a href="${profile.telegram}" class="profile_social_link"><i class="ri-telegram-line"></i></a>`);
+        if (profile.routine_url)
+            socials.push(`<a href="${profile.routine_url}" class="profile_social_link"><i class="ri-stethoscope-line"></i></a>`);
+        document.getElementById('profile-social').innerHTML = socials.join('');
+
+        // Stats
+        document.getElementById('profile-info').innerHTML = `
+            <div class="profile_info_group">
+                <h3 class="profile_info_number">${escHtml(profile.years_work)}</h3>
+                <p class="profile_info_description">Years of <br>work</p>
+            </div>
+            <div class="profile_info_group">
+                <h3 class="profile_info_number">${escHtml(profile.completed)}</h3>
+                <p class="profile_info_description">Completed <br>projects</p>
+            </div>
+            <div class="profile_info_group">
+                <h3 class="profile_info_number">${escHtml(profile.successful)}</h3>
+                <p class="profile_info_description">Successful <br>projects</p>
+            </div>`;
+
+        // Buttons
+        document.getElementById('profile-buttons').innerHTML = `
+            <div class="profile_buttons">
+                ${profile.articles_url ? `<a href="${profile.articles_url}" class="button">Articles<i class="ri-book-line"></i></a>` : ''}
+                ${profile.vlab_url ? `<a href="${profile.vlab_url}" class="button">vLab Studio<i class="ri-youtube-line"></i></a>` : ''}
+            </div>`;
+
+        // ── Build sections ────────────────────────────────────
+        const sectionData = {
+            notebooks: buildCards(notebooks),
+            projects:  buildCards(projects),
+            skills:    buildSkills(skills),
+        };
+
+        // ── Tabs ──────────────────────────────────────────────
+        const tabsList = document.getElementById('tabs-list');
+        tabsList.innerHTML = '';
+        const container = document.getElementById('sections-container');
+        container.innerHTML = '';
+
+        tabs.forEach((tab, i) => {
+            // Tab button
+            const btn = document.createElement('button');
+            btn.className = 'filters_button' + (i === 0 ? ' filter-tab-active' : '');
+            btn.dataset.target = '#' + tab.slug;
+            btn.textContent = tab.label;
+            tabsList.appendChild(btn);
+
+            // Section
+            const section = document.createElement('div');
+            if (tab.slug === 'skills') {
+                section.className = 'skills_content grid' + (i === 0 ? ' filters_active' : '');
+            } else {
+                section.className = 'projects_content grid' + (i === 0 ? ' filters_active' : '');
+            }
+            section.setAttribute('data-content', '');
+            section.id = tab.slug;
+            section.innerHTML = sectionData[tab.slug] || '';
+            container.appendChild(section);
+        });
+
+        // ── Tab switching ─────────────────────────────────────
+        tabsList.querySelectorAll('.filters_button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabsList.querySelectorAll('.filters_button').forEach(b => b.classList.remove('filter-tab-active'));
+                btn.classList.add('filter-tab-active');
+                const target = btn.dataset.target;
+                container.querySelectorAll('[data-content]').forEach(s => s.classList.remove('filters_active'));
+                container.querySelector(target)?.classList.add('filters_active');
+            });
+        });
+
+        // ── Search ────────────────────────────────────────────
+        document.getElementById('search-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const q = document.getElementById('search-input').value.toLowerCase().trim();
+            if (!q) {
+                container.querySelectorAll('.projects_card').forEach(c => c.style.display = '');
+                return;
+            }
+            container.querySelectorAll('.projects_card').forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(q) ? '' : 'none';
+            });
+        });
+    })();
+
+    // ── Render helpers ────────────────────────────────────────
+    function buildCards(items) {
+        return items.map(item => `
+            <article class="projects_card">
+                <img src="${escHtml(item.img)}" alt="${escHtml(item.title)}" class="projects_img">
+                <div class="projects_modal">
+                    <div>
+                        <span class="projects_subtitle">${escHtml(item.subtitle || '')}</span>
+                        <h3 class="projects_title">${escHtml(item.title)}</h3>
+                        <a href="${escHtml(item.href || '#')}" class="projects_button button button_small"
+                           ${item.href && item.href !== '#' && item.href !== '###' ? 'target="_blank" rel="noopener"' : ''}>
+                            <i class="ri-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>`).join('');
+    }
+
+    function buildSkills(areas) {
+        return areas.map(area => `
+            <div class="skills_area">
+                <h3 class="skills_title">${escHtml(area.area)}</h3>
+                <div class="skills_box">
+                    ${chunkArray(area.skills, Math.ceil(area.skills.length / 2)).map(group => `
+                        <div class="skills_group">
+                            ${group.map(s => `
+                                <div class="skills_data">
+                                    <i class="ri-checkbox-circle-line"></i>
+                                    <div>
+                                        <h3 class="skills_name">${escHtml(s.name)}</h3>
+                                        <span class="skills_level">${escHtml(s.level)}</span>
+                                    </div>
+                                </div>`).join('')}
+                        </div>`).join('')}
+                </div>
+            </div>`).join('');
+    }
+
+    function chunkArray(arr, size) {
+        const chunks = [];
+        for (let i = 0; i < arr.length; i += size) chunks.push(arr.slice(i, i + size));
+        return chunks;
+    }
+
+    function escHtml(s) {
+        return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    </script>
+</body>
+</html>
