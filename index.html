@@ -2141,8 +2141,64 @@ sr.reveal(".filters", {delay: 1000})
             return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
         }
 
-        // Notebooks
-        const nbEl = document.getElementById('notebooks');
+        var p = data.profile;
+
+        // ── Profile name ──────────────────────────────────
+        var nameEl = document.querySelector('.profile_name');
+        if (nameEl && p.name) nameEl.textContent = p.name;
+
+        // ── Tagline ───────────────────────────────────────
+        var tagEl = document.querySelector('.profile_profession');
+        if (tagEl && p.tagline) tagEl.textContent = p.tagline;
+
+        // ── Profile image ─────────────────────────────────
+        var imgEl = document.querySelector('.my_profile img');
+        if (imgEl && p.profile_img) imgEl.src = p.profile_img;
+
+        // ── Favicon ───────────────────────────────────────
+        var favEl = document.querySelector('link[rel="shortcut icon"]');
+        if (favEl && p.favicon) favEl.href = p.favicon;
+
+        // ── Page title ────────────────────────────────────
+        if (p.name) document.title = p.name;
+
+        // ── Social links ──────────────────────────────────
+        var socialEl = document.querySelector('.profile_social');
+        if (socialEl) {
+            var links = '';
+            if (p.email)
+                links += '<a href="mailto:' + p.email + '" target="_blank" class="profile_social_link"><i class="ri-mail-line"></i></a>';
+            if (p.whatsapp)
+                links += '<a href="' + p.whatsapp + '" target="_blank" class="profile_social_link"><i class="ri-whatsapp-line"></i></a>';
+            if (p.telegram)
+                links += '<a href="' + p.telegram + '" target="_blank" class="profile_social_link"><i class="ri-telegram-line"></i></a>';
+            if (p.routine_url)
+                links += '<a href="' + p.routine_url + '" target="_blank" class="profile_social_link"><i class="ri-stethoscope-line"></i></a>';
+            socialEl.innerHTML = links;
+        }
+
+        // ── Stats ─────────────────────────────────────────
+        var nums = document.querySelectorAll('.profile_info_number');
+        var descs = document.querySelectorAll('.profile_info_description');
+        if (nums.length >= 3) {
+            nums[0].textContent = p.years_work;
+            nums[1].textContent = p.completed;
+            nums[2].textContent = p.successful;
+        }
+
+        // ── Buttons (Articles / vLab) ─────────────────────
+        var btnsEl = document.querySelector('.profile_buttons');
+        if (btnsEl) {
+            var btns = '';
+            if (p.articles_url)
+                btns += '<a href="' + p.articles_url + '" target="_blank" class="button">Articles<i class="ri-book-line"></i></a>';
+            if (p.vlab_url)
+                btns += '<a href="' + p.vlab_url + '" target="_blank" class="button">vLab Studio<i class="ri-youtube-line"></i></a>';
+            btnsEl.innerHTML = btns;
+        }
+
+        // ── Notebooks ─────────────────────────────────────
+        var nbEl = document.getElementById('notebooks');
         if (nbEl && data.notebooks && data.notebooks.length) {
             nbEl.innerHTML = data.notebooks.map(function(b) {
                 return '<article class="projects_card">' +
@@ -2153,12 +2209,11 @@ sr.reveal(".filters", {delay: 1000})
                     '<a href="' + (b.href || '#') + '" class="projects_button button button_small">' +
                     '<i class="ri-download-line"></i></a>' +
                     '</div></div></article>';
-            }).join('') +
-            '<div></div><div style="text-align:right;">\u0091 Will be update, <a style="color:grey" href="index.html">insha\'Allah</a></div>';
+            }).join('');
         }
 
-        // Projects
-        const prEl = document.getElementById('projects');
+        // ── Projects ──────────────────────────────────────
+        var prEl = document.getElementById('projects');
         if (prEl && data.projects && data.projects.length) {
             prEl.innerHTML = data.projects.map(function(p) {
                 return '<article class="projects_card">' +
@@ -2169,12 +2224,11 @@ sr.reveal(".filters", {delay: 1000})
                     '<a href="' + (p.href || '#') + '" class="projects_button button button_small">' +
                     '<i class="ri-link"></i></a>' +
                     '</div></div></article>';
-            }).join('') +
-            '<div></div><div style="text-align:right;">\u0091 Will be update, <a style="color:grey" href="index.html">insha\'Allah</a></div>';
+            }).join('');
         }
 
-        // Skills
-        const skEl = document.getElementById('skills');
+        // ── Skills ────────────────────────────────────────
+        var skEl = document.getElementById('skills');
         if (skEl && data.skills && data.skills.length) {
             skEl.innerHTML = data.skills.map(function(area) {
                 var half = Math.ceil(area.skills.length / 2);
@@ -2197,7 +2251,7 @@ sr.reveal(".filters", {delay: 1000})
             }).join('');
         }
 
-        // Re-bind search to include dynamically loaded cards
+        // ── Search rebind ─────────────────────────────────
         var searchInput = document.getElementById('search-input');
         var searchForm = document.getElementById('search-form');
         if (searchInput) {
